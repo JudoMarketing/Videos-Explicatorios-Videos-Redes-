@@ -1,0 +1,36 @@
+export const C = {
+  ink: '#2B211C',
+  inkSoft: '#6B5A50',
+  cream: '#FFF6EC',
+  paper: '#FFFFFF',
+  red: '#E5484D',
+  redSoft: '#FFE1DE',
+  green: '#2FA86B',
+  greenSoft: '#DDF5E6',
+  yellow: '#FFD25A',
+  orange: '#FF9F43',
+  blue: '#4A7FC1',
+  sky: '#CFE3F7',
+  mint: '#B7DDB0',
+  lilac: '#E7DDF7',
+  pink: '#FF8FA3',
+  // niño
+  kidSkin: '#EDB98F',
+  kidSkinShade: '#D99B70',
+  kidHair: '#1E1A1A',
+  kidShirt: '#FFD25A',
+  kidStripe: '#FFF4D6',
+  kidShorts: '#4A7FC1',
+  shoe: '#E5484D',
+  // mamá
+  momSkin: '#F0C3A0',
+  momSkinShade: '#DDA27C',
+  momHair: '#7A4A2E',
+  momHairDark: '#5E3720',
+  momShirt: '#6CC4A8',
+  momShirtShade: '#53A88D',
+  jeans: '#5B84B8',
+  jeansDark: '#466C9C',
+};
+
+export const STROKE = 6;
