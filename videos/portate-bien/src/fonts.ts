@@ -17,16 +17,17 @@ let started = false;
 export const ensureFonts = () => {
   if (started) return;
   started = true;
-  const handle = delayRender('fonts');
-  Promise.all(
+  const handle = delayRender('fonts', {timeoutInMilliseconds: 60000, retries: 2});
+  const load = Promise.all(
     faces.map(([family, file, weight]) => {
       const f = new FontFace(family, `url(${staticFile(file)}) format("woff2")`, {weight});
       return f.load().then((loaded) => (document.fonts as unknown as Set<FontFace>).add(loaded));
     }),
-  )
-    .then(() => continueRender(handle))
-    .catch((e) => {
-      console.error(e);
-      continueRender(handle);
-    });
+  );
+  // Con varias pestañas renderizando a la vez una carga puede quedarse colgada:
+  // nunca bloqueamos más de 20 s.
+  const limit = new Promise((resolve) => setTimeout(resolve, 20000));
+  Promise.race([load, limit])
+    .catch((e) => console.error(e))
+    .finally(() => continueRender(handle));
 };
