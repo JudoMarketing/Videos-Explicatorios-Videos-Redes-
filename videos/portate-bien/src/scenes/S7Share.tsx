@@ -13,7 +13,7 @@ import {SCENES, sec} from '../timing';
 const [A, B] = SCENES.share;
 const SEND = sec(47.6);
 const COUNT_A = sec(44.4);
-const COUNT_B = sec(46.3);
+const COUNT_B = sec(45.35);
 
 // Globitos "¡Pórtate bien!" que se acumulan alrededor de la mamá cansada.
 const SPOTS: [number, number, number][] = [
@@ -30,7 +30,7 @@ export const S7Share: React.FC = () => (
   <Stage from={A} to={B} bg={<Plain color="#E5F1FC" dot="#D0E4F7" seed={7} floor="#D6E7F7" />}>
     {(g) => {
       const sent = g >= SEND;
-      const count = Math.round(interpolate(g, [COUNT_A, COUNT_B], [1, 20], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.quad)}));
+      const count = Math.round(interpolate(g, [COUNT_A, COUNT_B], [1, 20], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.quad)}));
       const counterIn = pop(g, COUNT_A - 4);
       const bubblesOut = ramp(g, SEND - 6, SEND + 8);
       const phone = pop(g, SEND, 13);
