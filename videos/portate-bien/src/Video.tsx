@@ -1,6 +1,5 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
-import {Captions} from './Captions';
 import {ensureFonts} from './fonts';
 import {S1Hook} from './scenes/S1Hook';
 import {S2Brain} from './scenes/S2Brain';
@@ -41,7 +40,6 @@ export const Video: React.FC = () => (
       .map(([key, , color]) => (
         <Wipe key={key} at={SCENES[key][0]} color={color} />
       ))}
-    <Captions />
     <Audio src={staticFile('audio.mp3')} />
   </AbsoluteFill>
 );

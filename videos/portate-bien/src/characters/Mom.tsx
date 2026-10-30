@@ -47,6 +47,9 @@ export const Mom: React.FC<{x: number; y: number; scale?: number; flip?: boolean
   const leg = (side: -1 | 1, [lift, rot]: [number, number]) => (
     <g transform={`translate(${side * 36},-380) rotate(${-side * rot}) translate(0,${-lift})`}>
       <rect x={-33} y={0} width={66} height={318} rx={22} fill={C.jeans} stroke={C.ink} strokeWidth={STROKE} />
+      <rect x={8} y={20} width={16} height={262} rx={8} fill={C.jeansDark} opacity={0.5} />
+      <path d={`M ${-side * 14} 24 L ${-side * 12} 286`} stroke="#86A8D4" strokeWidth={3} strokeDasharray="8 7" opacity={0.8} />
+      <path d="M -18 150 Q -4 158 10 150 M -14 166 Q -2 172 8 166" fill="none" stroke={C.jeansDark} strokeWidth={3} strokeLinecap="round" />
       <rect x={-34} y={292} width={68} height={26} rx={8} fill={C.jeansDark} stroke={C.ink} strokeWidth={STROKE} />
       <rect x={-16} y={316} width={32} height={30} fill={C.momSkin} stroke={C.ink} strokeWidth={STROKE} />
       <path
@@ -73,7 +76,10 @@ export const Mom: React.FC<{x: number; y: number; scale?: number; flip?: boolean
           strokeWidth={STROKE}
           strokeLinejoin="round"
         />
+        <path d="M 50 -420 L 88 -420 L 90 -350 L 54 -350 Z" fill={C.jeansDark} opacity={0.45} />
+        <path d="M -76 -404 Q -56 -380 -36 -404 M 36 -404 Q 56 -380 76 -404" fill="none" stroke={C.jeansDark} strokeWidth={4} strokeLinecap="round" />
         <rect x={-88} y={-426} width={176} height={16} rx={6} fill="#8A5A3B" stroke={C.ink} strokeWidth={STROKE * 0.8} />
+        <rect x={-12} y={-428} width={24} height={20} rx={4} fill="#E8C268" stroke={C.ink} strokeWidth={3} />
         <path d="M 0 -410 L 0 -362" stroke={C.jeansDark} strokeWidth={5} strokeLinecap="round" />
         {/* pelo de atrás (melena) */}
         <g transform={`rotate(${tilt},0,-600)`}>
@@ -87,6 +93,8 @@ export const Mom: React.FC<{x: number; y: number; scale?: number; flip?: boolean
               [0, HEAD_Y - 30, 96],
             ]}
           />
+          <path d={`M -96 ${HEAD_Y + 20} Q -110 ${HEAD_Y + 60} -96 ${HEAD_Y + 92} M 96 ${HEAD_Y + 20} Q 110 ${HEAD_Y + 60} 96 ${HEAD_Y + 92}`} fill="none" stroke={C.momHairDark} strokeWidth={5} strokeLinecap="round" />
+          <path d={`M -70 ${HEAD_Y + 50} Q -76 ${HEAD_Y + 78} -66 ${HEAD_Y + 98} M 70 ${HEAD_Y + 50} Q 76 ${HEAD_Y + 78} 66 ${HEAD_Y + 98}`} fill="none" stroke={C.momHairDark} strokeWidth={4} strokeLinecap="round" />
         </g>
         <Arm side={-1} x={-84} y={-592} upper={118} fore={112} width={28} a1={armL[0]} a2={armL[1]} skin={C.momSkin} sleeve={C.momShirt} sleeveLen={54} />
         <Arm side={1} x={84} y={-592} upper={118} fore={112} width={28} a1={armR[0]} a2={armR[1]} skin={C.momSkin} sleeve={C.momShirt} sleeveLen={54} />
@@ -98,11 +106,29 @@ export const Mom: React.FC<{x: number; y: number; scale?: number; flip?: boolean
           strokeWidth={STROKE}
           strokeLinejoin="round"
         />
+        <defs>
+          <clipPath id="momShirt">
+            <path d="M -86 -610 Q -96 -500 -84 -410 Q 0 -398 84 -410 Q 96 -500 86 -610 Q 0 -628 -86 -610 Z" />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#momShirt)">
+          <rect x={48} y={-640} width={60} height={240} fill={C.momShirtShade} opacity={0.6} />
+          <ellipse cx={0} cy={-606} rx={78} ry={22} fill={C.momShirtShade} opacity={0.5} />
+          <rect x={-100} y={-428} width={200} height={20} fill={C.momShirtShade} opacity={0.4} />
+          <path d="M -66 -590 Q -74 -520 -66 -440" fill="none" stroke="#fff" strokeWidth={9} strokeLinecap="round" opacity={0.25} />
+        </g>
         <path d="M -34 -616 L 0 -566 L 34 -616" fill={C.momSkin} stroke={C.ink} strokeWidth={STROKE} strokeLinejoin="round" />
         <path d="M -60 -470 Q 0 -460 60 -470" fill="none" stroke={C.momShirtShade} strokeWidth={5} strokeLinecap="round" />
+        <path d="M -40 -520 Q -20 -510 -6 -520" fill="none" stroke={C.momShirtShade} strokeWidth={4} strokeLinecap="round" />
+        {[-536, -500, -464].map((by) => (
+          <circle key={by} cx={0} cy={by} r={5} fill="#F3FBF7" stroke={C.momShirtShade} strokeWidth={2} />
+        ))}
         {/* cuello */}
         <rect x={-20} y={-640} width={40} height={40} fill={C.momSkin} stroke={C.ink} strokeWidth={STROKE} />
         <path d="M -34 -616 L 0 -566 L 34 -616" fill={C.momSkin} />
+        <rect x={-17} y={-637} width={34} height={16} fill={C.momSkinShade} opacity={0.6} />
+        <path d="M -22 -612 Q 0 -588 22 -612" fill="none" stroke="#E8C268" strokeWidth={3} />
+        <circle cx={0} cy={-596} r={6} fill="#E8C268" stroke={C.ink} strokeWidth={2} />
         <path d="M -34 -616 L 0 -566 L 34 -616" fill="none" stroke={C.ink} strokeWidth={STROKE} strokeLinejoin="round" />
 
         {/* cabeza */}
@@ -111,7 +137,20 @@ export const Mom: React.FC<{x: number; y: number; scale?: number; flip?: boolean
           <circle cx={86} cy={HEAD_Y + 10} r={18} fill={C.momSkin} stroke={C.ink} strokeWidth={STROKE} />
           <circle cx={-88} cy={HEAD_Y + 34} r={7} fill={C.yellow} stroke={C.ink} strokeWidth={3} />
           <circle cx={88} cy={HEAD_Y + 34} r={7} fill={C.yellow} stroke={C.ink} strokeWidth={3} />
+          <path d={`M -92 ${HEAD_Y + 2} Q -82 ${HEAD_Y + 10} -88 ${HEAD_Y + 20}`} fill="none" stroke={C.momSkinShade} strokeWidth={4} strokeLinecap="round" />
+          <path d={`M 92 ${HEAD_Y + 2} Q 82 ${HEAD_Y + 10} 88 ${HEAD_Y + 20}`} fill="none" stroke={C.momSkinShade} strokeWidth={4} strokeLinecap="round" />
           <ellipse cx={0} cy={HEAD_Y} rx={86} ry={92} fill={C.momSkin} stroke={C.ink} strokeWidth={STROKE} />
+          <defs>
+            <clipPath id="momFace">
+              <ellipse cx={0} cy={HEAD_Y} rx={83} ry={89} />
+            </clipPath>
+          </defs>
+          <g clipPath="url(#momFace)">
+            <ellipse cx={0} cy={HEAD_Y} rx={86} ry={92} fill={C.momSkinShade} opacity={0.55} />
+            <ellipse cx={-14} cy={HEAD_Y - 12} rx={84} ry={90} fill={C.momSkin} />
+            <ellipse cx={0} cy={HEAD_Y - 40} rx={86} ry={18} fill={C.momSkinShade} opacity={0.4} />
+            <ellipse cx={-44} cy={HEAD_Y - 6} rx={18} ry={10} fill="#fff" opacity={0.18} />
+          </g>
           {/* moño + flequillo */}
           <Blob
             fill={C.momHair}
@@ -126,6 +165,9 @@ export const Mom: React.FC<{x: number; y: number; scale?: number; flip?: boolean
           />
           <path d={`M -26 ${HEAD_Y - 172} Q 0 ${HEAD_Y - 150} 22 ${HEAD_Y - 176}`} fill="none" stroke={C.momHairDark} strokeWidth={5} strokeLinecap="round" />
           <path d={`M -10 ${HEAD_Y - 104} Q 20 ${HEAD_Y - 80} 30 ${HEAD_Y - 46}`} fill="none" stroke={C.momHairDark} strokeWidth={5} strokeLinecap="round" />
+          <path d={`M -40 ${HEAD_Y - 96} Q -60 ${HEAD_Y - 80} -66 ${HEAD_Y - 56}`} fill="none" stroke={C.momHairDark} strokeWidth={4} strokeLinecap="round" />
+          <path d={`M -22 ${HEAD_Y - 168} Q -10 ${HEAD_Y - 182} 8 ${HEAD_Y - 182}`} fill="none" stroke="#A86F4C" strokeWidth={6} strokeLinecap="round" />
+          <path d={`M -56 ${HEAD_Y - 106} Q -40 ${HEAD_Y - 120} -18 ${HEAD_Y - 122}`} fill="none" stroke="#A86F4C" strokeWidth={6} strokeLinecap="round" />
           <rect x={-30} y={HEAD_Y - 128} width={60} height={14} rx={7} fill={C.pink} stroke={C.ink} strokeWidth={4} />
           <EyePair y={HEAD_Y + 6} dx={32} rx={15} ry={19} look={look} open={open} kind={eyes} lashes />
           <BrowPair y={HEAD_Y - 18} dx={33} w={30} kind={brows} color={C.momHairDark} />

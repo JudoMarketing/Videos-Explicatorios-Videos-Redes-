@@ -1,7 +1,7 @@
 import React from 'react';
 import {interpolate} from 'remotion';
 import {blink, lipSync, pop, ramp} from '../anim';
-import {Plain} from '../backgrounds';
+import {Kitchen} from '../backgrounds';
 import {Kid} from '../characters/Kid';
 import {Mom} from '../characters/Mom';
 import {Bubble, CrossMark, FogCloud, Headline, Lightbulb, Sparkle} from '../props';
@@ -14,7 +14,7 @@ const [A, B] = SCENES.specific;
 
 // 12.6–19.5 s · "En vez de usar una simple frase, tienes que decirle exactamente a tu hijo lo que sí quieres ver."
 export const S3Specific: React.FC = () => (
-  <Stage from={A} to={B} bg={<Plain color="#E6F6EA" dot="#D2EDD9" seed={3} floor="#D5EEDC" />}>
+  <Stage from={A} to={B} bg={<Kitchen />}>
     {(g) => {
       const swap = sec(15.5);
       const vague = pop(g, A + 6);

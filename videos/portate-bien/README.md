@@ -5,24 +5,25 @@ Video para Reels / TikTok / Shorts (1080×1920, 30 fps, 51 s) que ilustra el aud
 acciones concretas («camina despacio», «usa tu voz bajita»).
 
 Todo está dibujado en código (React + SVG con [Remotion](https://remotion.dev)):
-personajes, fondos, globos y subtítulos. No hay imágenes de terceros.
+personajes, fondos, globos y titulares. No hay imágenes de terceros. El video no lleva
+subtítulos; los titulares de arriba cuentan la idea si se ve sin sonido.
 
 ## Escenas
 
 | # | Tiempo | Qué pasa | Archivo |
 |---|---|---|---|
 | 1 | 0,0–5,6 s | Cocina: la mamá dice «¡Pórtate bien!», el niño no entiende | `src/scenes/S1Hook.tsx` |
-| 2 | 5,6–12,6 s | El cerebro del niño no capta qué acción es | `src/scenes/S2Brain.tsx` |
-| 3 | 12,6–19,5 s | De la frase vaga a «lo que SÍ quieres ver» | `src/scenes/S3Specific.tsx` |
+| 2 | 5,6–12,6 s | Cuarto del niño: su cerebro no capta qué acción es | `src/scenes/S2Brain.tsx` |
+| 3 | 12,6–19,5 s | Cocina: de la frase vaga a «lo que SÍ quieres ver» | `src/scenes/S3Specific.tsx` |
 | 4 | 19,5–27,6 s | «No corras» se cambia por «Camina despacio» | `src/scenes/S4Run.tsx` |
 | 5 | 27,6–32,9 s | «No grites» se cambia por «Usa tu voz bajita» | `src/scenes/S5Shout.tsx` |
-| 6 | 32,9–41,5 s | Lista de acciones concretas = portarse bien | `src/scenes/S6Action.tsx` |
-| 7 | 41,5–51,4 s | Llamado a compartir el video | `src/scenes/S7Share.tsx` |
+| 6 | 32,9–41,5 s | Jardín: lista de acciones concretas = portarse bien | `src/scenes/S6Action.tsx` |
+| 7 | 41,5–51,4 s | Sala al atardecer: llamado a compartir el video | `src/scenes/S7Share.tsx` |
 
 Otros archivos:
 
 - `src/characters/` niño, mamá y piezas comunes (ojos, cejas, bocas, brazos).
-- `src/captions.ts` texto de los subtítulos con el segundo de cada palabra.
+- `src/backgrounds.tsx` escenarios: cocina, sala, cuarto, jardín y sala al atardecer.
 - `src/timing.ts` límites de cada escena.
 - `src/amp.json` volumen de la voz por fotograma (mueve la boca de la mamá).
 - `src/theme.ts` colores.

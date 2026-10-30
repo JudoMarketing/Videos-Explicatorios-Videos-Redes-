@@ -51,9 +51,12 @@ export const Arm: React.FC<{
     return (
       <g transform={`translate(${x},${y}) rotate(${r1})`}>
         <line x1={0} y1={0} x2={0} y2={upper} stroke={col} strokeWidth={w} strokeLinecap="round" />
+        {mode === 'f' ? <line x1={side * width * 0.22} y1={0} x2={side * width * 0.22} y2={upper} stroke="#7A4A2E" strokeWidth={width * 0.34} strokeLinecap="round" opacity={0.16} /> : null}
         <g transform={`translate(0,${upper}) rotate(${r2})`}>
           <line x1={0} y1={0} x2={0} y2={fore} stroke={col} strokeWidth={w} strokeLinecap="round" />
+          {mode === 'f' ? <line x1={side * width * 0.22} y1={0} x2={side * width * 0.22} y2={fore} stroke="#7A4A2E" strokeWidth={width * 0.34} strokeLinecap="round" opacity={0.16} /> : null}
           <circle cx={0} cy={fore + 4} r={mode === 'o' ? hand + STROKE : hand} fill={col} />
+          {mode === 'f' ? <circle cx={side * hand * 0.3} cy={fore + 4 + hand * 0.25} r={hand * 0.62} fill="#7A4A2E" opacity={0.14} /> : null}
         </g>
       </g>
     );

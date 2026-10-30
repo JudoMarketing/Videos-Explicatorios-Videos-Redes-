@@ -51,6 +51,9 @@ export const Kid: React.FC<{x: number; y: number; scale?: number; flip?: boolean
   const leg = (side: -1 | 1, [lift, rot]: [number, number]) => (
     <g transform={`translate(${side * 30},-175) rotate(${-side * rot}) translate(0,${-lift})`}>
       <rect x={-18} y={0} width={36} height={140} rx={18} fill={C.kidSkin} stroke={C.ink} strokeWidth={STROKE} />
+      <rect x={3} y={40} width={10} height={92} rx={5} fill={C.kidSkinShade} opacity={0.55} />
+      <rect x={-15} y={33} width={30} height={14} rx={6} fill={C.kidSkinShade} opacity={0.7} />
+      <path d="M -8 80 Q -2 86 4 80" fill="none" stroke={C.kidSkinShade} strokeWidth={3} strokeLinecap="round" />
       {/* zapatilla */}
       <g transform={`translate(${side * 6},150)`}>
         <path
@@ -62,6 +65,8 @@ export const Kid: React.FC<{x: number; y: number; scale?: number; flip?: boolean
         />
         <rect x={-38} y={2} width={76} height={18} rx={9} fill="#fff" stroke={C.ink} strokeWidth={STROKE} />
         <path d="M -12 -14 L 12 -14 M -10 -4 L 10 -4" stroke="#fff" strokeWidth={4} strokeLinecap="round" />
+        <path d="M 10 -20 Q 26 -14 28 2" fill="none" stroke="#B5303A" strokeWidth={5} strokeLinecap="round" opacity={0.6} />
+        <ellipse cx={-18} cy={-12} rx={7} ry={4} fill="#fff" opacity={0.45} />
       </g>
     </g>
   );
@@ -81,6 +86,19 @@ export const Kid: React.FC<{x: number; y: number; scale?: number; flip?: boolean
           strokeWidth={STROKE}
           strokeLinejoin="round"
         />
+        <defs>
+          <clipPath id="kidShorts">
+            <path d="M -76 -220 L 76 -220 L 82 -142 Q 44 -134 6 -142 L 0 -168 L -6 -142 Q -44 -134 -82 -142 Z" />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#kidShorts)">
+          <rect x={42} y={-230} width={60} height={100} fill="#2F5C93" opacity={0.45} />
+          <rect x={-90} y={-222} width={180} height={18} fill="#2F5C93" opacity={0.5} />
+          <rect x={-90} y={-156} width={180} height={20} fill="#2F5C93" opacity={0.3} />
+          <path d="M -60 -200 Q -40 -186 -26 -200" fill="none" stroke="#2F5C93" strokeWidth={4} strokeLinecap="round" />
+          <path d="M 26 -200 Q 40 -186 60 -200" fill="none" stroke="#2F5C93" strokeWidth={4} strokeLinecap="round" />
+          <rect x={-60} y={-212} width={26} height={6} rx={3} fill="#7FA7DA" opacity={0.7} />
+        </g>
         <Arm side={-1} x={-68} y={-318} upper={60} fore={62} width={30} a1={armL[0]} a2={armL[1]} skin={C.kidSkin} sleeve={C.kidShirt} sleeveLen={34} />
         <Arm side={1} x={68} y={-318} upper={60} fore={62} width={30} a1={armR[0]} a2={armR[1]} skin={C.kidSkin} sleeve={C.kidShirt} sleeveLen={34} />
         {/* camiseta a rayas */}
@@ -94,6 +112,10 @@ export const Kid: React.FC<{x: number; y: number; scale?: number; flip?: boolean
           {[-318, -288, -258, -228].map((sy) => (
             <rect key={sy} x={-100} y={sy} width={200} height={13} fill={C.kidStripe} />
           ))}
+          <rect x={46} y={-350} width={60} height={160} fill="#D99A22" opacity={0.32} />
+          <ellipse cx={0} cy={-336} rx={64} ry={20} fill="#C98F1E" opacity={0.38} />
+          <rect x={-100} y={-214} width={200} height={16} fill="#C98F1E" opacity={0.25} />
+          <path d="M -58 -330 Q -64 -280 -60 -226" fill="none" stroke="#fff" strokeWidth={8} strokeLinecap="round" opacity={0.3} />
         </g>
         <path
           d="M -72 -334 Q -84 -270 -80 -200 L 80 -200 Q 84 -270 72 -334 Q 0 -350 -72 -334 Z"
@@ -108,7 +130,20 @@ export const Kid: React.FC<{x: number; y: number; scale?: number; flip?: boolean
         <g transform={`rotate(${tilt},0,-340)`}>
           <circle cx={-112} cy={HEAD_Y + 8} r={24} fill={C.kidSkin} stroke={C.ink} strokeWidth={STROKE} />
           <circle cx={112} cy={HEAD_Y + 8} r={24} fill={C.kidSkin} stroke={C.ink} strokeWidth={STROKE} />
+          <path d={`M -118 ${HEAD_Y - 2} Q -108 ${HEAD_Y + 8} -114 ${HEAD_Y + 22}`} fill="none" stroke={C.kidSkinShade} strokeWidth={5} strokeLinecap="round" />
+          <path d={`M 118 ${HEAD_Y - 2} Q 108 ${HEAD_Y + 8} 114 ${HEAD_Y + 22}`} fill="none" stroke={C.kidSkinShade} strokeWidth={5} strokeLinecap="round" />
           <circle cx={0} cy={HEAD_Y} r={112} fill={C.kidSkin} stroke={C.ink} strokeWidth={STROKE} />
+          <defs>
+            <clipPath id="kidFace">
+              <circle cx={0} cy={HEAD_Y} r={109} />
+            </clipPath>
+          </defs>
+          <g clipPath="url(#kidFace)">
+            <circle cx={0} cy={HEAD_Y} r={112} fill={C.kidSkinShade} opacity={0.6} />
+            <circle cx={-18} cy={HEAD_Y - 16} r={110} fill={C.kidSkin} />
+            <ellipse cx={0} cy={HEAD_Y - 44} rx={110} ry={26} fill={C.kidSkinShade} opacity={0.45} />
+            <ellipse cx={-56} cy={HEAD_Y + 8} rx={26} ry={14} fill="#fff" opacity={0.16} />
+          </g>
           <Blob
             fill={C.kidHair}
             circles={[
@@ -131,6 +166,9 @@ export const Kid: React.FC<{x: number; y: number; scale?: number; flip?: boolean
             ]}
           />
           <path d={`M -62 ${HEAD_Y - 118} Q -40 ${HEAD_Y - 140} -14 ${HEAD_Y - 132}`} fill="none" stroke="#4A4242" strokeWidth={7} strokeLinecap="round" />
+          <path d={`M 20 ${HEAD_Y - 138} Q 40 ${HEAD_Y - 146} 58 ${HEAD_Y - 132}`} fill="none" stroke="#4A4242" strokeWidth={6} strokeLinecap="round" />
+          <path d={`M -96 ${HEAD_Y - 80} Q -88 ${HEAD_Y - 96} -72 ${HEAD_Y - 100}`} fill="none" stroke="#3A3434" strokeWidth={5} strokeLinecap="round" />
+          <path d={`M 84 ${HEAD_Y - 92} Q 98 ${HEAD_Y - 84} 104 ${HEAD_Y - 66}`} fill="none" stroke="#3A3434" strokeWidth={5} strokeLinecap="round" />
           <EyePair y={HEAD_Y + 22} dx={40} rx={21} ry={27} look={look} open={open} kind={eyes} />
           <BrowPair y={HEAD_Y - 16} dx={42} w={34} kind={brows} />
           <path d={`M -6 ${HEAD_Y + 52} Q 4 ${HEAD_Y + 60} 10 ${HEAD_Y + 50}`} fill="none" stroke={C.kidSkinShade} strokeWidth={5} strokeLinecap="round" />

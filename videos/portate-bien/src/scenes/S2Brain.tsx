@@ -1,7 +1,7 @@
 import React from 'react';
 import {interpolate} from 'remotion';
 import {blink, pop, wobble} from '../anim';
-import {Plain} from '../backgrounds';
+import {Bedroom} from '../backgrounds';
 import {Kid} from '../characters/Kid';
 import {Blob} from '../characters/parts';
 import {HEAD} from '../fonts';
@@ -14,7 +14,7 @@ const [A, B] = SCENES.brain;
 
 // 5.6–12.6 s · "El cerebro del niño no recepciona qué es portarse bien si no define ninguna acción."
 export const S2Brain: React.FC = () => (
-  <Stage from={A} to={B} bg={<Plain color="#F1E8FB" dot="#E4D5F6" seed={2} floor="#E6D9F5" />}>
+  <Stage from={A} to={B} bg={<Bedroom />}>
     {(g) => {
       const kidIn = pop(g, A + 2);
       const cloud = pop(g, sec(6.3));

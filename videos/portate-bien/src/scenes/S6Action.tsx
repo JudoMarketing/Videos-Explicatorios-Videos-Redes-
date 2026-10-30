@@ -1,7 +1,7 @@
 import React from 'react';
 import {interpolate} from 'remotion';
 import {blink, pop, ramp, wobble} from '../anim';
-import {Plain} from '../backgrounds';
+import {Garden} from '../backgrounds';
 import {Kid} from '../characters/Kid';
 import {Mom} from '../characters/Mom';
 import {CheckBadge, Clipboard, EyeIcon, Headline, Heart, Sparkle, Star} from '../props';
@@ -20,7 +20,7 @@ const ITEMS = [
 
 // 32.9–41.5 s · "Aquí sí tenemos una acción que define eso que tú como padres quieres ver y lo que para ti es portarse bien."
 export const S6Action: React.FC = () => (
-  <Stage from={A} to={B} bg={<Plain color="#FFF4DA" dot="#FBE6B2" seed={6} floor="#F8E2B4" />}>
+  <Stage from={A} to={B} bg={<Garden />}>
     {(g) => {
       const board = pop(g, A + 3);
       const eye = pop(g, sec(37.9));

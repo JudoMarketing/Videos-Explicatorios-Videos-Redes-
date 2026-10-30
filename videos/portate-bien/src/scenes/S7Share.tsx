@@ -1,7 +1,7 @@
 import React from 'react';
 import {Easing, interpolate} from 'remotion';
 import {blink, lipSync, pop, ramp, wobble} from '../anim';
-import {Plain} from '../backgrounds';
+import {EveningRoom} from '../backgrounds';
 import {Mom} from '../characters/Mom';
 import {Kid} from '../characters/Kid';
 import {Headline, Heart, PaperPlane, Phone, Sparkle} from '../props';
@@ -27,7 +27,7 @@ const SPOTS: [number, number, number][] = [
 
 // 41.5–51.4 s · "Si tú conoces a alguien que repite 20 veces al día «pórtate bien», mándale este video…"
 export const S7Share: React.FC = () => (
-  <Stage from={A} to={B} bg={<Plain color="#E5F1FC" dot="#D0E4F7" seed={7} floor="#D6E7F7" />}>
+  <Stage from={A} to={B} bg={<EveningRoom />}>
     {(g) => {
       const sent = g >= SEND;
       const count = Math.round(interpolate(g, [COUNT_A, COUNT_B], [1, 20], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.quad)}));
